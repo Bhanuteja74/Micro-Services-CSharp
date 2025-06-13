@@ -5,3 +5,9 @@
       context: .
       dockerfile: ProductService/Dockerfile
 
+  orderservice:
+    image: orderservice
+    build:
+      context: .
+      dockerfile: OrderService/Dockerfile
+
