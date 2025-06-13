@@ -1,3 +1,5 @@
+using System.Text.Json;
+
 public record Product(int Id, string Name, double Price);
 public class ProductClient
 {
@@ -12,11 +14,19 @@ public class ProductClient
     {
         var response = await _client.GetAsync($"http://localhost:5000/Product/{id}");
 
-        Console.WriteLine(response);
+        
+        
         if (!response.IsSuccessStatusCode)
             return null;
+        // one way to deserialize the response using System.Text.Json
+        // another way is to use Newtonsoft.Json
+        
+        var content = await response.Content.ReadAsStringAsync();
+        return JsonSerializer.Deserialize<Product>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
 
-        var product = await response.Content.ReadFromJsonAsync<Product>();
-        return new Product(product.Id, product.Name, product.Price);
+
+
+        // var product = await response.Content.ReadFromJsonAsync<Product>();
+        // return product;
     }
 }
