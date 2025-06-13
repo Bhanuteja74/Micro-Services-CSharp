@@ -19,7 +19,6 @@ class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();   
         builder.Services.AddControllers();
-        
         builder.Services.AddHttpClient<ProductClient>(client =>
             client.BaseAddress = new Uri("http://localhost:5000")
         );

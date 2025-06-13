@@ -3,6 +3,9 @@ using ProductService.Models;
 using ProductService.Services;
 
 namespace ProductService.Controller;
+/// <summary>
+/// This controller handles product-related operations such as retrieving all products,
+/// </summary>
 
 [ApiController]
 [Route("[controller]")]
@@ -15,6 +18,10 @@ public class ProductController : ControllerBase
         _productService = productService;
     }
 
+    /// <summary>
+    /// GetAll method retrieves all products.
+    /// </summary>
+    /// <returns></returns>
     [HttpGet]
     public IActionResult GetAll() => Ok(_productService.GetAll());
 
