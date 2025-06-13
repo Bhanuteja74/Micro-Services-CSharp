@@ -4,7 +4,7 @@
     build:
       context: .
       dockerfile: ProductService/Dockerfile
-      ports:
+    ports:
       - "5000:80"
 
   orderservice:
@@ -12,5 +12,5 @@
     build:
       context: .
       dockerfile: OrderService/Dockerfile
-      ports:
+    ports:
       - "6000:80"
