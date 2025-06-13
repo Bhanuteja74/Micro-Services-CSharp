@@ -20,6 +20,10 @@ class Program
         builder.Services.AddSwaggerGen();   
         builder.Services.AddControllers();
         
+        builder.Services.AddHttpClient<ProductClient>(client =>
+            client.BaseAddress = new Uri("http://localhost:5000")
+        );
+        
         var app = builder.Build();
         return app;
     }
